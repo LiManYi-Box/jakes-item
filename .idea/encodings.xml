@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-commons" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-commons/common-exception" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-commons/common-exploit" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-commons/common-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-consumers" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-consumers/consumer-securtiy-oauth2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-consumers/consumer-user-port" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-providers" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-providers/provider-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jakes-item-providers/provider-user-server" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: jakes-item-uesr-server
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.101.210.220:3306/jackrisk?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+mybatis:
+  type-aliases-package: com.leader.provider.api.domain
+  mapper-locations: classpath:mapper/*.xml
+
+dubbo:
+  scan:
+    base-packages: com.leader.provider.user.server.service.*
+  protocol:
+    name: dubbo
+    port: 20886
+  registry:
+    address: nacos://121.199.60.63:8848
+  provider:
+    loadbalance: roundrobin
+
+common:
+  oauth:
+    grant_type: password
+    client_id: client
+    client_secret: secret
