@@ -7,20 +7,16 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <url>http://www.funtl.com</url>
+
     <properties>
         <!-- Share Exploit -->
         <https-3.version>4.0.1</https-3.version>
-
-        <!-- Atom Cloud Exploit -->
-        <javax.version>7.0</javax.version>
-        <junit.version>4.12</junit.version>
         <dubbo.version>2.7.2</dubbo.version>
-        <lombok.version>1.18.8</lombok.version>
         <dubbo-kryo.version>2.7.2</dubbo-kryo.version>
-        <aibaba-JSON.version>1.2.56</aibaba-JSON.version>
+        <alibaba-json.version>1.2.58</alibaba-json.version>
         <dubbo-actuator.version>2.7.1</dubbo-actuator.version>
-        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <spring-boot-mapper.version>2.1.5</spring-boot-mapper.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <spring-cloud-alibaba.verion>0.9.0.RELEASE</spring-cloud-alibaba.verion>
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
     </properties>
@@ -39,6 +35,7 @@
     </developers>
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Cloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -53,6 +50,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Apache Dubbo -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
@@ -78,21 +76,26 @@
                 <version>${dubbo-actuator.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-serialization-kryo</artifactId>
+                <version>${dubbo-kryo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.dubbo</groupId>
+                        <artifactId>dubbo-common</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
                 <groupId>com.alibaba.spring</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>${alibaba-spring-context-support.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-serialization-kryo</artifactId>
-                <version>${dubbo-kryo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-            <!-- spring-security-ouath2.0 Begin -->
+            <!-- DataSource -->
             <dependency>
                 <groupId>com.zaxxer</groupId>
                 <artifactId>HikariCP</artifactId>
@@ -110,32 +113,9 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${spring-boot-mapper.version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-api</artifactId>
-                <version>${javax.version}</version>
-            </dependency>
-            <!-- spring-security-ouath2.0 End -->
-            <!-- Alibaba JSON Begin-->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${aibaba-JSON.version}</version>
             </dependency>
             <!-- Alibaba JSON End -->
             <!-- Apache 轻量级 restful API 实现 Begin -->
@@ -145,6 +125,13 @@
                 <version>${https-3.version}</version>
             </dependency>
             <!-- Apache 轻量级 restful API 实现 End -->
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${alibaba-json.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <repositories>

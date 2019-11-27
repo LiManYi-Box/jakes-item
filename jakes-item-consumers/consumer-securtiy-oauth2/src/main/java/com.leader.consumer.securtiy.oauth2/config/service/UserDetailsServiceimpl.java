@@ -31,21 +31,17 @@ public class UserDetailsServiceimpl implements UserDetailsService {
     @Reference(version = "1.0.0")
     TbJackriskPermissionService tbJackriskPermissionService;
 
+    private static final String USERNAME = "admin";
+    private static final String PASSWORD = "$2a$10$WhCuqmyCsYdqtJvM0/J4seCU.xZQHe2snNE5VFUuBGUZWPbtdl3GG";
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         TbJackriskUser user = tbJackriskUserService.selectByUserName(username);
-        logger.info("测试user数据   " + JSONObject.toJSONString(user));
-        if (user == null || user.getStates() == 1) return null;
-        List<GrantedAuthority> authorityList = Lists.newArrayList();
-        if (StringUtils.isNotNull(user)) {
-            List<TbJackriskPermission> permissions = tbJackriskPermissionService.selectByUserID(user.getId());
-            logger.info("测试permissions数据   " + JSONObject.toJSONString(permissions));
-            permissions.forEach(permission -> {
-                GrantedAuthority authority = new SimpleGrantedAuthority(permission.getEnname());
-                authorityList.add(authority);
-            });
-        }
-        return new User(user.getUsername(), user.getPassword(), authorityList);
+        if (user == null) return null;
+        List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("USER");
+        grantedAuthorities.add(grantedAuthority);
+        return new User(USERNAME, PASSWORD, grantedAuthorities);
     }
 
 }

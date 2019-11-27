@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 import javax.sql.DataSource;
@@ -24,42 +25,48 @@ import javax.sql.DataSource;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    @Bean
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSource(){
-        return DataSourceBuilder.create().build();
-    }
-
-    @Bean
-    public TokenStore tokenStore(){
-        return new JdbcTokenStore(dataSource());
-    }
-
-    @Bean
-    public ClientDetailsService jdbcDetailsService(){
-        return new JdbcClientDetailsService(dataSource());
-    }
-
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
     /**
      * 注入用于支持 password 模式
      */
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Bean
+    public TokenStore tokenStore(){
+        return new InMemoryTokenStore();
+    }
 
     @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        // 用于支持密码模式
+        endpoints
+                .authenticationManager(authenticationManager)
+                .tokenStore(tokenStore())
+        ;
+    }
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security
+                // 允许客户端访问 /oauth/check_token 检查 token
+                .checkTokenAccess("isAuthenticated()")
+                .allowFormAuthenticationForClients();
+    }
+    /**
+     * 配置客户端
+     * @param clients
+     * @throws Exception
+     */
+    @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // clients.withClientDetails(jdbcDetailsService());
         clients
                 // 使用内存设置
                 .inMemory()
                 // client_id
                 .withClient("client")
                 // client_secret
-                .secret(bCryptPasswordEncoder.encode("secret"))
+                .secret(passwordEncoder.encode("secret"))
                 // 授权类型，密码模式和刷新令牌
                 .authorizedGrantTypes("password", "refresh_token")
                 // 授权范围
@@ -69,25 +76,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 // 设置访问令牌的有效期，这里是 1 天
                 .accessTokenValiditySeconds(60 * 60 * 24)
                 // 设置刷新令牌的有效期，这里是 30 天
-                .refreshTokenValiditySeconds(60 * 60 * 24 * 30)
-        ;
+                .refreshTokenValiditySeconds(60 * 60 * 24 * 30);
     }
-
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(tokenStore());
-        endpoints.authenticationManager(authenticationManager);
-    }
-
-
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security
-                // 允许客户端访问 /oauth/check_token 检查 token
-                .checkTokenAccess("isAuthenticated()")
-                .allowFormAuthenticationForClients();
-    }
-
 
 }
 

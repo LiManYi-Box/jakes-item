@@ -6,32 +6,47 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="configuration-feign" />
         <module name="consumer-securtiy-oauth2" />
         <module name="consumer-user-port" />
+        <module name="profile-feign" />
+        <module name="profile-server" />
         <module name="provider-api" />
         <module name="provider-user-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="business-profile-service" target="1.8" />
       <module name="common-exception" target="1.8" />
       <module name="common-exploit" target="1.8" />
       <module name="common-web" target="1.8" />
       <module name="commons-web" target="1.8" />
+      <module name="configuration-feign" target="1.8" />
+      <module name="consumer-profile" target="1.8" />
       <module name="consumer-securtiy-oauth2" target="1.8" />
       <module name="consumer-user-port" target="1.8" />
       <module name="jakes-item" target="1.8" />
       <module name="jakes-item-commons" target="1.8" />
+      <module name="jakes-item-configuration" target="1.8" />
       <module name="jakes-item-consumers" target="1.8" />
       <module name="jakes-item-dependencies" target="1.5" />
       <module name="jakes-item-providers" target="1.8" />
+      <module name="profile-feign" target="1.8" />
+      <module name="profile-server" target="1.8" />
+      <module name="profile-service" target="1.8" />
       <module name="provider-api" target="1.8" />
       <module name="provider-user-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="business-profile-service" options="-parameters" />
+      <module name="configuration-feign" options="-parameters" />
       <module name="consumer-securtiy-oauth2" options="-parameters" />
       <module name="consumer-user-port" options="-parameters" />
+      <module name="profile-feign" options="-parameters" />
+      <module name="profile-server" options="-parameters" />
+      <module name="profile-service" options="-parameters" />
       <module name="provider-api" options="-parameters" />
       <module name="provider-user-server" options="-parameters" />
     </option>

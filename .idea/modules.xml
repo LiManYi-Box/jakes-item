@@ -5,13 +5,18 @@
       <module fileurl="file://$PROJECT_DIR$/jakes-item-commons/common-exception/common-exception.iml" filepath="$PROJECT_DIR$/jakes-item-commons/common-exception/common-exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-commons/common-exploit/common-exploit.iml" filepath="$PROJECT_DIR$/jakes-item-commons/common-exploit/common-exploit.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-commons/common-web/common-web.iml" filepath="$PROJECT_DIR$/jakes-item-commons/common-web/common-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jakes-item-configuration/configuration-feign/configuration-feign.iml" filepath="$PROJECT_DIR$/jakes-item-configuration/configuration-feign/configuration-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jakes-item-consumers/consumer-profile/consumer-profile.iml" filepath="$PROJECT_DIR$/jakes-item-consumers/consumer-profile/consumer-profile.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-consumers/consumer-securtiy-oauth2/consumer-securtiy-oauth2.iml" filepath="$PROJECT_DIR$/jakes-item-consumers/consumer-securtiy-oauth2/consumer-securtiy-oauth2.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-consumers/consumer-user-port/consumer-user-port.iml" filepath="$PROJECT_DIR$/jakes-item-consumers/consumer-user-port/consumer-user-port.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jakes-item.iml" filepath="$PROJECT_DIR$/.idea/jakes-item.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-commons/jakes-item-commons.iml" filepath="$PROJECT_DIR$/jakes-item-commons/jakes-item-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jakes-item-configuration/jakes-item-configuration.iml" filepath="$PROJECT_DIR$/jakes-item-configuration/jakes-item-configuration.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-consumers/jakes-item-consumers.iml" filepath="$PROJECT_DIR$/jakes-item-consumers/jakes-item-consumers.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-dependencies/jakes-item-dependencies.iml" filepath="$PROJECT_DIR$/jakes-item-dependencies/jakes-item-dependencies.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-providers/jakes-item-providers.iml" filepath="$PROJECT_DIR$/jakes-item-providers/jakes-item-providers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jakes-item-consumers/consumer-profile/profile-feign/profile-feign.iml" filepath="$PROJECT_DIR$/jakes-item-consumers/consumer-profile/profile-feign/profile-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jakes-item-consumers/consumer-profile/profile-server/profile-server.iml" filepath="$PROJECT_DIR$/jakes-item-consumers/consumer-profile/profile-server/profile-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-providers/provider-api/provider-api.iml" filepath="$PROJECT_DIR$/jakes-item-providers/provider-api/provider-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/jakes-item-providers/provider-user-server/provider-user-server.iml" filepath="$PROJECT_DIR$/jakes-item-providers/provider-user-server/provider-user-server.iml" />
     </modules>

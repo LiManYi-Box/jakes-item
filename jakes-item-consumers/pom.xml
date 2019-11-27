@@ -27,5 +27,6 @@
     <modules>
         <module>consumer-user-port</module>
         <module>consumer-securtiy-oauth2</module>
+        <module>consumer-profile</module>
     </modules>
 </project>

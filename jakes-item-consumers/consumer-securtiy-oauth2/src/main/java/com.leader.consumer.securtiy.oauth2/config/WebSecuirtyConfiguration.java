@@ -26,32 +26,20 @@ public class WebSecuirtyConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(WebSecuirtyConfiguration.class);
 
-
     @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceimpl();
-    }
-
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
+        // 配置默认的加密方式
         return new BCryptPasswordEncoder();
     }
-
+    @Bean
+    @Override
+    protected UserDetailsService userDetailsService() {
+        return new UserDetailsServiceimpl();
+    }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService());
     }
-
-    @Override
-    public void configure(WebSecurity web) {
-        web
-                .ignoring()
-                .antMatchers("/oauth/check_token")
-                .antMatchers("/user/login")
-        ;
-    }
-
     /**
      * 用于支持 password 模式
      *
@@ -64,31 +52,25 @@ public class WebSecuirtyConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-
-
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        String[] arr = {"admin","user","khjl"};
-        http
-                .exceptionHandling()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .antMatchers("/user/info").hasAnyAuthority(arr)
-                .antMatchers("/user/logout").hasAnyAuthority(arr)
-                /*.antMatchers("/login").permitAll()
-                .antMatchers("/**")
-                .fullyAuthenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .and()
-                .csrf()
-                .disable()*/
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/user/login")
+                .antMatchers("/user/logout")
         ;
     }
 
-
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.exceptionHandling()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+                // 增加了授权访问配置
+                .antMatchers("/user/info").hasAuthority("USER")
+                .antMatchers("/user/logout").hasAuthority("USER")
+        ;
+    }
 }

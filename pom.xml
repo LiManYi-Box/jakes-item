@@ -17,6 +17,7 @@
         <!-- 依赖时注意代码执行顺序 -->
         <module>jakes-item-dependencies</module> <!-- 统一依赖 -->
         <module>jakes-item-commons</module> <!-- 通用工具类 -->
+        <module>jakes-item-configuration</module> <!-- 通用配置类 -->
         <module>jakes-item-providers</module> <!-- 服务提供者 -->
         <module>jakes-item-consumers</module> <!-- 服务消费者 -->
     </modules>
