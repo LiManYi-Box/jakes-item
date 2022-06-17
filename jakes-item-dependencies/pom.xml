@@ -13,7 +13,7 @@
         <https-3.version>4.0.1</https-3.version>
         <dubbo.version>2.7.2</dubbo.version>
         <dubbo-kryo.version>2.7.2</dubbo-kryo.version>
-        <alibaba-json.version>1.2.58</alibaba-json.version>
+        <alibaba-json.version>1.2.83</alibaba-json.version>
         <dubbo-actuator.version>2.7.1</dubbo-actuator.version>
         <spring-boot-mapper.version>2.1.5</spring-boot-mapper.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
